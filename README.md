@@ -43,7 +43,8 @@ This system helps:
 ## ⚙️ Deployment
 Deployed locally using Flask
 <img width="1736" height="920" alt="image" src="https://github.com/user-attachments/assets/6e538333-d7f3-4f18-8ab9-3b92582a10bf" />
-<img width="1748" height="923" alt="image" src="https://github.com/user-attachments/assets/38397106-a6ad-4a3f-8f13-6b048ac1e1e7" />
+<img width="1676" height="880" alt="image" src="https://github.com/user-attachments/assets/0c0154a7-22f1-4e3f-b329-ec78af9b05de" />
+
 
 
 ## ⚠️ Disclaimer
