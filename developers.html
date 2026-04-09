@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Development Team</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
+}
+
+body{
+background:#f4f6f9;
+}
+
+.navbar{
+background:#16386a;
+padding:15px 30px;
+display:flex;
+gap:20px;
+}
+
+.navbar a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+}
+
+.navbar a:hover{
+color:#4da3ff;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+padding:40px 20px;
+}
+
+h1{
+text-align:center;
+margin-bottom:40px;
+color:#2c3e50;
+}
+
+/* GRID */
+
+.team-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:30px;
+}
+
+/* CARD */
+
+.team-member{
+background:white;
+border-radius:12px;
+padding:20px;
+text-align:center;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+.team-member:hover{
+transform:translateY(-6px);
+}
+
+/* IMAGE */
+
+.member-photo{
+width:100%;
+height:300px;
+object-fit:cover;
+object-position:top;
+border-radius:10px;
+margin-bottom:15px;
+}
+
+/* NAME */
+
+.member-name{
+font-size:20px;
+color:#2c3e50;
+margin-bottom:10px;
+}
+
+/* TEXT */
+
+.member-id{
+font-size:14px;
+color:#555;
+line-height:1.6;
+}
+
+@media(max-width:900px){
+.team-grid{
+grid-template-columns:repeat(2,1fr);
+}
+}
+
+@media(max-width:600px){
+.team-grid{
+grid-template-columns:1fr;
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<nav class="navbar">
+<a href="/">Home</a>
+<a href="/developers">Developers</a>
+</nav>
+
+<div class="container">
+
+<h1>Our Development Team</h1>
+
+<div class="team-grid">
+
+
+<!-- Mariem -->
+
+<div class="team-member">
+<img src="{{ url_for('static', filename='images/mariem_image.png') }}" class="member-photo">
+
+<h2 class="member-name">Mariem Mohamed</h2>
+
+<p class="member-id">
+Mariem Mohamed is a Business Analytics graduate from the Faculty of 
+Management, Economics and Business Technology. She specializes in 
+data science, machine learning, and AI-powered analytics with a focus 
+on leveraging data to drive smarter business decisions.
+
+<br><br>
+Email: maryemmohamed047@gmail.com
+</p>
+
+</div>
+
+
+<!-- Ibrahim -->
+
+<div class="team-member">
+<img src="{{ url_for('static', filename='images/ibrahim_image.png') }}" class="member-photo">
+
+<h2 class="member-name">Ibrahim Mohamed</h2>
+
+<p class="member-id">
+Ibrahim Mohamed is a student at the Faculty of Artificial Intelligence. 
+He is passionate about artificial intelligence, machine learning, and 
+modern technologies, with a focus on developing data-driven solutions 
+and continuously improving his technical skills to keep up with the 
+rapid advancements in AI.
+
+<br><br>
+Email: ibrahem2007mohamed@gmail.com
+</p>
+
+</div>
+
+
+
+<!-- Mai -->
+
+<div class="team-member">
+<img src="{{ url_for('static', filename='images/Mai_image.png') }}" class="member-photo">
+
+<h2 class="member-name">Mai Hassan</h2>
+
+<p class="member-id">
+Mai Hassan is a third-year student at the Faculty of Economics and 
+Political Science, Cairo University. She completed training at the 
+National Investment Bank and Housing and Development Bank, gaining 
+practical exposure to the banking sector.
+
+<br><br>
+Email: maihassan63101@gmail.com
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>

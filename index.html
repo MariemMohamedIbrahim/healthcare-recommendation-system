@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Care Eents</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background: #1a4789;
+            min-height: 100vh;
+        }
+        .navbar {
+            background-color: #16386a;
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: flex-start;
+            gap: 20px;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 16px;
+            font-size: 16px;
+        }
+        .navbar a:hover {
+            color: #3498db;
+        }
+        .main-header {
+            color: white;
+            text-align: center;
+            margin-top: 60px;
+        }
+        .subtitle {
+            color: white;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .curved-box {
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.13);
+            padding: 36px 32px 28px 32px;
+            max-width: 420px;
+            margin: 0 auto 40px auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .select2-container--default .select2-selection--multiple {
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            background: #f5f5f5;
+            min-height: 48px;
+            font-size: 16px;
+        }
+        .select2-container--default .select2-results__option--highlighted {
+            background-color: #1a4789;
+        }
+        .recommend-btn {
+            background: #1a4789;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            margin-top: 18px;
+            transition: background 0.2s;
+        }
+        .recommend-btn:hover {
+            background: #16386a;
+        }
+        .recommendations-section {
+            background: white;
+            border-radius: 30px 30px 0 0;
+            padding: 30px 0 0 0;
+            margin-top: 10px;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .recommend-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 15px;
+            flex: 0 0 calc(33.333% - 20px);
+            margin: 10px;
+            min-width: 0;
+        }
+        .recommend-card h6 {
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .recommend-card p {
+            color: #888;
+            font-size: 15px;
+            margin-bottom: 0;
+            word-wrap: break-word;
+        }
+        .select2-container--open .select2-dropdown--below {
+            border-radius: 8px;
+            margin-top: 5px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.13);
+        }
+        
+        .select2-results__option {
+            padding: 8px 12px;
+        }
+        
+        .select2-search--dropdown {
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="/">Home</a>
+        <a href="/developers">Developers</a>
+    </nav>
+    <div class="container-fluid">
+        <div class="main-header">
+            <h1 style="font-weight: 700;">Health Care Center</h1>
+        </div>
+        <div class="subtitle">
+            <div>Our AI help you heal with just a few clicks!</div>
+        </div>
+        <div class="curved-box">
+            <form method="POST">
+                <label for="symptoms" class="form-label" style="font-weight: 500; color: #222;">Type symptoms</label>
+                <div style="display: flex; gap: 10px; align-items: flex-start;">
+                    <select id="symptoms" name="symptoms" class="form-select" multiple="multiple" style="flex: 1;">
+                        {% for symptom in symptoms_list %}
+                            <option value="{{ symptom }}" {% if symptom in selected_symptoms %}selected{% endif %}>{{ symptom }}</option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit" class="recommend-btn" title="Get Recommendations" style="margin-top: 0;">
+                        <span>&#8594;</span>
+                    </button>
+                </div>
+                <div id="symptom-warning" style="color: #e74c3c; margin-top: 10px; font-weight: 500; display: none; text-align: center;">
+    🔍 For better accuracy, try selecting at least 2 symptoms. The more we know, the better we help!
+</div>
+
+            </form>
+        </div>
+
+        {% if recommendations %}
+        <div class="recommendations-section">
+            <h4 style="color: #222; font-size: 24px; font-weight: 600; margin-left: 40px;">Recommendations</h4>
+            <div class="d-flex flex-wrap justify-content-center" style="margin: 30px 40px 0 40px; gap: 20px;">
+                <div class="recommend-card">
+                    <h6>🏥 Disease</h6>
+                    <p>{{ recommendations.disease }}</p>
+                </div>
+                <div class="recommend-card">
+                    <h6>📝 Description</h6>
+                    <p>{{ recommendations.desc }}</p>
+                </div>
+                <div class="recommend-card">
+                    <h6>⚠️ Precautions</h6>
+                    <p>{{ recommendations.precautions|join(', ') }}</p>
+                </div>
+                <div class="recommend-card">
+                    <h6>🏋️‍♂️ Workouts</h6>
+                    <p>{{ recommendations.workouts|join(', ') }}</p>
+                </div>
+                <div class="recommend-card">
+                    <h6>🥗 Diet</h6>
+                    <p>{{ recommendations.diet }}</p>
+                </div>
+                <div class="recommend-card">
+                    <h6>💊 Medications</h6>
+                    <p>{{ recommendations.medications }}</p>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script>
+    $(document).ready(function() {
+     
+        $('#symptoms').select2({
+            placeholder: 'Select symptoms...',
+            width: '100%',
+            minimumInputLength: 0, // Show all options even without typing
+            dropdownAutoWidth: true,
+            closeOnSelect: false
+        });
+
+       
+        $('#symptoms').on('select2:open', function() {
+            $('.select2-search__field').attr('placeholder', 'Search symptoms...');
+        });
+
+        
+        $('#symptoms').on('change', function () {
+            const count = $(this).val().length;
+            if (count < 2) {
+                $('#symptom-warning').fadeIn();
+            } else {
+                $('#symptom-warning').fadeOut();
+            }
+        });
+    });
+</script>
+
+    
+</body>
+</html>
