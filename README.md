@@ -1,40 +1,35 @@
-# healthcare-recommendation-system
+# Team Portfolio Website
 
-## 📌 Problem
-Provide personalized healthcare recommendations based on user symptoms using machine learning techniques.
+A modern portfolio website built with Flask to showcase team members.
 
-## 🛠️ Tools & Technologies
-- Python (Pandas, NumPy, Scikit-learn)
-- Machine Learning
-- Data Visualization (Matplotlib, Seaborn, Power BI)
-- Streamlit (for deployment)
+## Setup Instructions
 
-## 🚀 Project Workflow
-- Data Cleaning & Preprocessing  
-- Exploratory Data Analysis (EDA)  
-- Feature Engineering  
-- Model Training & Evaluation  
-- Deployment using Flask
+1. Create a virtual environment (recommended):
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
 
-## 🤖 Model
-- Applied classification algorithms to predict diseases based on symptoms  
-- Optimized model performance using feature selection techniques  
+2. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
 
-## 📊 Results
-- Achieved high prediction accuracy  
-- Successfully mapped symptoms to possible diseases  
+3. Add team member photos:
+- Create a folder: `static/images/`
+- Add team member photos as `team1.png`, `team2.png`, `team3.png`, `team4.png`
 
-## 💡 Business Value
-This system helps:
-- Assist patients in identifying possible health conditions  
-- Support decision-making before consulting doctors  
-- Reduce time and effort in initial diagnosis  
+4. Run the application:
+```bash
+python app.py
+```
 
-## 📷 Sample Outputs
-(Add screenshots of your app or visualizations here)
+5. Open your browser and visit: `http://localhost:5000`
 
-## ⚙️ Deployment
-(Add your Streamlit app link here)
+## Features
 
-## ⚠️ Disclaimer
-This system is for educational purposes only and does not replace professional medical advice.
+- Responsive design
+- Modern UI with Bootstrap 5
+- Team member cards with photos and bios
+- Hover effects and smooth animations
+- Mobile-friendly layout 
