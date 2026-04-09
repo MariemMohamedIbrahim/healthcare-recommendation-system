@@ -6,3 +6,4 @@ Flask
 joblib
 matplotlib
 seaborn
+gunicorn
