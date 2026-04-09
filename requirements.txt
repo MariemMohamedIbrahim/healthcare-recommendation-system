@@ -1,10 +1,8 @@
-Flask==3.0.0
-Pillow==10.3.0
-python-dotenv==1.0.0 
-gunicorn
+streamlit
 pandas
 numpy
 scikit-learn
+Flask
+joblib
 matplotlib
 seaborn
-streamlit
